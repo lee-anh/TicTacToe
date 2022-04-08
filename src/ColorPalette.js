@@ -1,7 +1,11 @@
 import React, {useState} from 'react'; 
-import { Button } from 'bootstrap';
+import {ColorSlider} from "./ColorSlider.js"
 import Box from "./Box.js"
 
+// have to be able to add buttons and then have those buttons
+// be able to control
+// have to store the color
+// integrate the 2 components 
 
 const pink = "#ffdbef"; 
 const orange = "#ffca61";
@@ -10,6 +14,8 @@ const green = "#c4ff91";
 const blue = "#dbf8ff";
 const purple = "#f1dbff"; 
 const white = "white"
+
+// now to incorporate the color picker 
 // make a button for each one
 // when pressed it should send a
 // stick timer and hello kitty on the page. settings to choose between jinbesan and hello kitty 
@@ -24,18 +30,25 @@ export function ColorPalette(){
     const[color, setColor] = useState(pink); 
     const[secondColor, setSecondColor] = useState({data:"white"}); 
     const divStyle = {backgroundColor: color}; 
-    const timeBlocks = Array(12).fill(<Box data={secondColor.data}/>); 
+    const timeBlocks = Array(12).fill(<Box data={secondColor.data}/>);
+    
+   
+
     
     const handleClick = (newColor) => {
         setColor(newColor);
         setSecondColor({data:newColor}); 
-
     }
 
     // now make the time blocks 
 
     return(
+        
         <div style={divStyle}>
+      
+            <ColorSlider />
+
+          
             {colorValues.map((colorValue, i)=>(
                 <button class="btn btn-light" style={{background: colorValue}} onClick={() => handleClick(colorValue)} key={colorNames[i]}>{colorNames[i]}</button>
             ))}

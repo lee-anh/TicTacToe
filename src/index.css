@@ -38,8 +38,6 @@ ul {
 }
 
 li {
-  background-color: rgb(255, 199, 216);
-  border: 1px solid rgb(255, 199, 216);
   border-radius: 5px 5px;
 
   margin: 5px;
@@ -68,7 +66,7 @@ li div button:focus {
 }
 
 li h2 {
-  background-color: rgb(255, 153, 184); 
+
   margin: 0;
   padding: 4px;
 }

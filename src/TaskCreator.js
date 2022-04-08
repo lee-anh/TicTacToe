@@ -4,7 +4,7 @@ import TasksList from "./TasksList";
 import "./index.css"
 
 export default function TaskCreator(){
-    const [newTask, setNewTask] = useState({}); 
+  const [newTask, setNewTask] = useState({}); 
   const [allTasks, setAllTasks] = useState([]); 
   
   const handleChange = ({ target }) => {

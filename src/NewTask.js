@@ -1,7 +1,9 @@
 import React from "react"; 
+import {ColorSlider} from "./ColorSlider"
 
 export default function NewTask({newTask, handleChange, handleSubmit}){
     return(
+        <div>
         
         <form onSubmit={handleSubmit}>
     
@@ -14,18 +16,17 @@ export default function NewTask({newTask, handleChange, handleSubmit}){
             />
             {!newTask.title ? null : (
                 <> 
-                <textarea
-                    name="description"
-                    placeholder="Details..."
-                    value={newTask.description || ""}
-                    onChange={handleChange}
-
-                />
                 <button type="submit">Add Task</button>
-            </>
+                <ColorSlider/>
+                </>
+                
             )}
+            
         
         </form>
+        
+
+        </div>
         
     )
 }

@@ -1,6 +1,7 @@
 import React from "react";
 
 export default function TasksList({allTasks, handleDelete}){
+    // how to store all of the task colors? 
     return(
         <ul>
             {allTasks.map(({title, description, id}) => (
