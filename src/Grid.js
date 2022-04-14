@@ -7,12 +7,6 @@ import Box from "./Box.js"
 // have to store the color
 // integrate the 2 components 
 
-const pink = "#ffdbef"; 
-const orange = "#ffca61";
-const yellow = "#ffff9c"; 
-const green = "#c4ff91"; 
-const blue = "#dbf8ff";
-const purple = "#f1dbff"; 
 const white = "white"
 
 // now to incorporate the color picker 
@@ -26,7 +20,7 @@ const white = "white"
 const colorValues = [pink, orange, yellow, green, blue, purple, white]; 
 const colorNames = ["pink", "orange", "yellow", "green", "blue", "purple", "reset"]; 
 
-export function ColorPalette(){
+export function Grid(props){
     const[color, setColor] = useState(pink); 
     const[secondColor, setSecondColor] = useState({data:"white"}); 
     const divStyle = {backgroundColor: color}; 
@@ -43,10 +37,7 @@ export function ColorPalette(){
     return(
         
         <div style={divStyle}>
-            {colorValues.map((colorValue, i)=>(
-                <button class="btn btn-light" style={{background: colorValue}} onClick={() => handleClick(colorValue)} key={colorNames[i]}>{colorNames[i]}</button>
-            ))}
-       
+
             <div class="d-flex flex-column" style={{width: "250px"}}>
    
             {Array(12).fill(<Box data={secondColor.data}/>)}

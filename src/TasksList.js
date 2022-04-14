@@ -1,16 +1,20 @@
 import React from "react";
 
 export default function TasksList({allTasks, handleDelete}){
-    // how to store all of the task colors? 
+
+    // on click we need to aquire the tasks's color - what level should that be at????? 
+    // need to have a parent component? and then pass it to the parent component 
+    // which will pass it down to the Box 
+
     return(
         <ul>
-            {allTasks.map(({title, description, id}) => (
+            {allTasks.map(({title, taskColor, id}) => (
                 <li key={id}>
-                    <div>
+                    <div style={{background: taskColor}}>
                         <h2>{title}</h2>
+                      <h2>taskColor: {taskColor}</h2>
                         <button className="xButton" onClick={() => handleDelete(id)}>X</button>
                     </div>
-                    {!description ? null: <p>{description}</p>}
                 </li>
             ))}
         </ul>

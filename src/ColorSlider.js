@@ -3,31 +3,44 @@ import React,{useState} from 'react';
 import {SliderPicker} from 'react-color'; 
 
 
-
-export function ColorSlider(){
+export function ColorSlider(props){
     const[state, setState] = useState({
         color: {
             r: '120',
             g: '219',
             b: '20',
-            a: '1',
+            a: '1'
         }
     });
 
-    const handleChange = (color) => {
+    /*
+    const handleColorChange = (color) => {
         setState({ color: color.rgb }); 
+    }
+    */
 
+    const handleColorChangeComplete = (color, e) => {
+        setState({ color: color.rgb }); 
+        props.onChange("taskColor", color.hex); 
+        console.log(e); 
     }
 
     return(
-        <SliderPicker color={state.color} onChange={ handleChange } />
+        <SliderPicker color={state.color} onChange={handleColorChangeComplete}  />
     );
 }
 
 
 
 /*
-class ColorSlider extends React.Component {
+
+export class ColorSlider extends React.Component {
+
+    constructor(props){
+        super(props);
+        this.handleChange = this.handleChange.bind(this);
+    }
+    
 
     state = {
         color: {
@@ -37,21 +50,31 @@ class ColorSlider extends React.Component {
             a: '1',
         }
     }; 
-    handleChange = (color) => {
-        this.setState({ color: color.rgb });
-  
-      };
     
+    handleChange = (color, event) => {
+        this.setState({ color: color.rgb });
+       // const taskColor = event.target.value;
+      //  this.props.onChange(taskColor); 
+        
+      };
+      
+    
+      handleChange(color, event){
+        this.setState({ color: color.rgb });
+        const taskColor = event.target.value;
+        this.props.onChange(taskColor); 
+        
+      };
+      
     
     render(){
         return (
             <div>
-                <SliderPicker color={this.state.color} onChange={ this.handleChange } />
+                <SliderPicker color={this.state.color} />
             </div>
         );
     }
 }
-
-export default ColorSlider; 
-
 */
+
+//export default ColorSlider; 

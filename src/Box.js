@@ -1,7 +1,7 @@
 import React, {useState} from 'react'; 
 
 export default function Box(props){
-    // try a staging and  set 
+    // try a staging and set 
     const [currColor, setCurrColor] = useState("white"); 
 
     const handleClick = (colory) =>{
