@@ -3,9 +3,12 @@ import React, {useState} from 'react';
 export default function Box(props){
     // try a staging and set 
     const [currColor, setCurrColor] = useState("white"); 
+    const [taskName, setCurrTaskName] = useState(""); 
 
-    const handleClick = (colory) =>{
+    // try to figure out how to handle tasky
+    const handleClick = (colory, tasky) =>{
         setCurrColor(colory); 
+       // setCurrTaskName(tasky); 
     }
 
     return(

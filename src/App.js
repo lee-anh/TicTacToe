@@ -2,7 +2,7 @@
 
 import './App.css';
 import {Test} from './Test.js'
-import {Game} from './Board.js'
+import Mother from './Mother.js'
 import {Palette} from './Palette.js'
 import {ColorPalette} from './ColorPalette.js'
 import {Clock} from './Clock.js'
@@ -18,6 +18,8 @@ function App() {
           <div class="p-2"><Test myName="Claire" favorite="1"/></div>
           <div class ="p-2"><Clock/></div>
         </div>
+        <Mother />
+        
 
         <div class="d-flex flex-row">
          <ColorPalette/>

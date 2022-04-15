@@ -22,7 +22,7 @@ export function ColorSlider(props){
     const handleColorChangeComplete = (color, e) => {
         setState({ color: color.rgb }); 
         props.onChange("taskColor", color.hex); 
-        console.log(e); 
+
     }
 
     return(

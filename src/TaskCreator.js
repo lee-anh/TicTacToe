@@ -3,10 +3,11 @@ import NewTask from "./NewTask";
 import TasksList from "./TasksList";
 import "./index.css"
 
-export default function TaskCreator(){
+export default function TaskCreator({handleOnClickForMom}){
   const [newTask, setNewTask] = useState({}); 
   const [allTasks, setAllTasks] = useState([]); 
   
+  // event handler for general changes to state 
   const handleChange = ({ target }) => {
     const { name, value } = target;
 
@@ -16,13 +17,12 @@ export default function TaskCreator(){
       [name]: value}));
   }; 
 
+  // event handler for changing the color 
   const handleColorChangey = (name, color) => {
     setNewTask((prev) => ({
       ...prev, 
       id: Date.now(),
       [name]: color }));
-    
-     console.log("Name: " + name + " Color: " + color); 
   }; 
 
   const handleSubmit = (event) => {
@@ -38,6 +38,7 @@ export default function TaskCreator(){
       )); 
   }; 
   
+  
   return (
       <main>
         <h1>Tasks</h1>
@@ -47,10 +48,13 @@ export default function TaskCreator(){
           handleColorChangey = {handleColorChangey}
           handleSubmit={handleSubmit}
           
+          
         />
         <TasksList
           allTasks={allTasks}
           handleDelete={handleDelete}
+          handleOnClickForMom={handleOnClickForMom}
+        
         />
       </main>
     );
