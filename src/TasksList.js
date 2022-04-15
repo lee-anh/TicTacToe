@@ -12,7 +12,7 @@ export default function TasksList({allTasks, handleDelete, handleOnClickForMom})
         <ul>
             {allTasks.map(({title, taskColor, id}) => (
                 <li key={id}>
-                    <div style={{background: taskColor}} onClick={()=>handleOnClickForMom(taskColor)}>
+                    <div style={{background: taskColor}} onClick={()=>handleOnClickForMom(taskColor, title)}>
                         <h2>{title}</h2>
                       <h2>taskColor: {taskColor}</h2>
                         <button className="xButton" onClick={() => handleDelete(id)}>X</button>
