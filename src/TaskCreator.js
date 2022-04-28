@@ -4,10 +4,11 @@ import TasksList from "./TasksList";
 import "./index.css"
 
 
-export default function TaskCreator({handleOnClickForMom}){
+export default function TaskCreator({initialList, handleOnClickForMom, handleAddTasks}){
   const [newTask, setNewTask] = useState({}); 
-  const [allTasks, setAllTasks] = useState([]); 
-  
+  const [allTasks, setAllTasks] = useState(initialList); // got to pass this up!
+
+
   // event handler for general changes to state 
   const handleChange = ({ target }) => {
     const { name, value } = target;
@@ -30,6 +31,7 @@ export default function TaskCreator({handleOnClickForMom}){
     event.preventDefault();
     if (!newTask.title) return;
     setAllTasks((prev) => [newTask, ...prev]); 
+    handleAddTasks(allTasks); 
     setNewTask({}); 
   }
 
@@ -37,11 +39,14 @@ export default function TaskCreator({handleOnClickForMom}){
     setAllTasks((prev) => prev.filter(
       (task) => task.id !== taskIdToRemove
       )); 
+    handleAddTasks(allTasks); 
+    
   }; 
   
+  // currently the last action is getting lost 
   
   return (
-      <main>
+    <div>
         <h1>Tasks</h1>
         <NewTask
           newTask={newTask}
@@ -57,7 +62,8 @@ export default function TaskCreator({handleOnClickForMom}){
           handleOnClickForMom={handleOnClickForMom}
         
         />
-      </main>
+      </div>
+      
     );
   
 }

@@ -1,24 +1,44 @@
 import React from "react";
 
+
+import Row from "react-bootstrap/Row"; 
+import Col from "react-bootstrap/Col"; 
+
 export default function TasksList({allTasks, handleDelete, handleOnClickForMom}){
 
-    // on click we need to aquire the tasks's color - what level should that be at????? 
-    // need to have a parent component? and then pass it to the parent component 
-    // which will pass it down to the Box 
 
 
     // for handle delete you must make this harder to delete 
     return(
-        <ul>
+        <div>
+            <Row xs="auto">
             {allTasks.map(({title, taskColor, id}) => (
-                <li key={id}>
-                    <div style={{background: taskColor}} onClick={()=>handleOnClickForMom(taskColor, title)}>
+                    <Col>
+                    <div key={id} style={{background: taskColor, position: "relative", textAlign: "center", minWidth: 300, minHeight: 150}} onClick={()=>handleOnClickForMom(taskColor, title)}>
                         <h2>{title}</h2>
-                      <h2>taskColor: {taskColor}</h2>
                         <button className="xButton" onClick={() => handleDelete(id)}>X</button>
                     </div>
-                </li>
+                    </Col>
+                
             ))}
-        </ul>
+            </Row>
+        </div>
     ); 
 }
+
+/*
+
+<div>
+            <Row>
+            {allTasks.map(({title, taskColor, id}) => (
+                <div key={id} style={{minWidth: 300}}>
+                    <div style={{background: taskColor, position: "relative", textAlign: "center"}} onClick={()=>handleOnClickForMom(taskColor, title)}>
+                        <h2>{title}</h2>
+                        <button className="xButton" onClick={() => handleDelete(id)}>X</button>
+                    </div>
+                </div>
+            ))}
+            </Row>
+        </div>
+
+*/

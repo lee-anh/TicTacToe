@@ -11,6 +11,7 @@ export default function NewTask({newTask, handleChange, handleColorChangey, hand
                 placeholder="New task"
                 value={newTask.title || ""}
                 onChange={handleChange}
+                style = {{minWidth: 500}}
 
             />
 

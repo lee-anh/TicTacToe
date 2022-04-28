@@ -72,6 +72,7 @@ export default function Aunt(props){
     return(
         <div>
             <h1>History</h1>
+            <hr />
         
         <Container>
         <Row xs="auto">
@@ -108,6 +109,7 @@ export default function Aunt(props){
             </Col>
         </Row>
         </Container>
+        <hr />
        
             <div className="container">
                 <div className="row">

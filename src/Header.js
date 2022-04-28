@@ -1,5 +1,7 @@
 import { Nav } from "react-bootstrap"
 import {Link} from "react-router-dom"
+import Row from "react-bootstrap/Row"
+import Col from "react-bootstrap/Col"
 
 export default function Header(){
     return(
@@ -9,12 +11,15 @@ export default function Header(){
                 <div className="navbar-header">
                     <h1>♥ Time Tracker ♥</h1>
                 </div>
-                <div className="row">
+                <Row>
             
-                    <div className="col"><Link to="/">Home</Link></div>
-                    <div className="col"><Link to="dashboard">Dashboard</Link></div>
+                    <Col><Link to="/">Home</Link></Col>
+                    <Col><Link to="dashboard">Dashboard</Link></Col>
+                    <Col><Link to="history">History</Link></Col>
+
+                    
                 
-                </div>
+                </Row>
                 </div>
             </nav>
         </div>

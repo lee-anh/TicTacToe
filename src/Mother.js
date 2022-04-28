@@ -1,20 +1,31 @@
 import React, {useState} from 'react';
+
+
+import Row from "react-bootstrap/Row"
+import Col from "react-bootstrap/Col"
+
 import Box from "./Box.js"
 import TaskCreator from './TaskCreator.js';
-
 import GoodAlert from './GoodAlert.js'
+import TimePicker from './TimePicker.js';
 
 //let boxArray = []; // not the right scope 
-export default function Mother({handleAddListToGrandList}){
+export default function Mother({initialList, handleAddListToGrandList, handleAddTask}){
     const boxColor = "white"; 
     const boxName = "default title"; 
 
-  
+    const [timeBlocks, setTimeBlocks] = useState(12); 
     const [currentBrushColor, setCurrentBrushColor] = useState("pink"); 
     const [currentTaskName, setCurrentTaskName] = useState("");
-    const [colorArray, setColorArray] = useState(Array(12).fill({boxColor: "white", boxName: ""})); 
-    const timeBlocks = 12; 
+    const [colorArray, setColorArray] = useState(Array(timeBlocks).fill({boxColor: "white", boxName: ""})); 
+    
 
+    const computeTimeBlocks = (starty, endy) => {
+        let num = endy-starty; 
+        if(num > 0){
+            setTimeBlocks(endy-starty);
+        }
+    }; 
     // maybe have another function to reset the Box Array?
     const handleBoxChange = (id, color, taskName) => {
         // next handle the taskName 
@@ -45,11 +56,8 @@ export default function Mother({handleAddListToGrandList}){
     const handleSaveClick = () => {
         handleAddListToGrandList(colorArray); 
         // reset the arrays 
-        setColorArray(Array(12).fill({boxColor: "white", boxName: ""})); // this is ok 
+        setColorArray(Array(timeBlocks).fill({boxColor: "white", boxName: ""})); // this is ok 
     
-
-
-
         /*
         let newBoxArray = []; 
         for(let i = 0; i < timeBlocks; i++){
@@ -64,22 +72,24 @@ export default function Mother({handleAddListToGrandList}){
     
     return(
         <div>
-             <div class="d-flex flex-row">
-
-            <TaskCreator handleOnClickForMom={handleOnClickForMom}/>
-        
-            <div class="d-flex flex-column" style={{width: "250px"}}>
+            <Row>
+            <Col>
+            <TaskCreator initialList={initialList} handleOnClickForMom={handleOnClickForMom} handleAddTasks={handleAddTask}/>
+            </Col>
+            <Col>
+            <hr />
+            <TimePicker computeTimeBlocks={computeTimeBlocks}/>
+            <hr />
+            <div class="d-flex flex-column" style={{width: 300}}>
                 {boxArray}
-                
                 <GoodAlert handleSaveClick={handleSaveClick}/>
             </div>
+            </Col>
             
-            </div>
+            
+            </Row>
         </div>
     )
 
 }
 
-
-// old save:  <button class="btn btn-dark" style={{backgroundColor: 'cornflowerblue'}} onClick={()=>handleAddListToGrandList(colorArray)}>Save Day</button>
-// another old save: <button class="btn btn-light" style={{backgroundColor: 'mistyrose'}} onClick={()=>handleSaveClick()}>Save Day</button>

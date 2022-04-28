@@ -13,15 +13,9 @@ export default function Grandma() {
         // set it 
         setGrandList(grandList => [...grandList, listToAdd]); 
 
-        /*
-        for(var i = 0; i < grandList.length; i++){
-            console.log(i + "th element\n"); 
-            for(var j = 0; j < grandList[i].length; j++){
-                console.log(grandList[i][j]); 
-            }
-        }
-        */
     }
+
+
     //<Aunt listOfList={grandList}/>
     return(
         <div>
