@@ -1,72 +1,122 @@
 import React, {useState} from 'react'; 
-import { Dropdown } from 'bootstrap';
+
+import Dropdown from 'react-bootstrap/Dropdown'
+import Row from "react-bootstrap/Row"
+import Col from "react-bootstrap/Col"
+import Container from "react-bootstrap/Container"
 
 
 export default function Aunt(props){
+    const [order, setOrder] = useState("Oldest to Newest"); 
+    const [display, setDisplay] = useState("Default"); 
 
-    console.log("AUNT COMPONENT"); 
     // for each of the lists in list of lists, render a component 
+    /*
     for(let i = 0; i < props.listOfList.length; i++){
         console.log(props.listOfList[i]); 
     }
-    // great, we are receiving the right thing, now just 
-    // intead of upsing a map, regular for loop is fine. 
+    */
+    
 
-
-    // now to work on formattings 
-    // options: display in reverse order, display in chronological order
-    // "Most Recent" and "Chronological"
     let rows = []; 
-    for(let i = 0; i < props.listOfList.length; i++){
-        let subRows = []; 
-        for(let j = 0; j < props.listOfList[i].length; j++){
-            subRows.push(<div style={{backgroundColor: props.listOfList[i][j].boxColor}}><p>{props.listOfList[i][j].boxName}</p></div>); 
+    let perCol = 6; 
+    let perColCompact = 14; 
+
+    if(order === "Oldest to Newest"){
+
+        for(let i = 0; i < props.listOfList.length; i++){
+            let subRows = []; 
+            for(let j = 0; j < props.listOfList[i].length; j++){
+                
+                if(display === "Default"){
+
+                    subRows.push(<div style={{backgroundColor: props.listOfList[i][j].boxColor, height: 30, margin: 5, width: ((window.innerWidth)/(perCol))}}><p>{props.listOfList[i][j].boxName}</p></div>); 
+                } else {
+                    
+                    subRows.push(<div style={{backgroundColor: props.listOfList[i][j].boxColor, height: 30, margin: 5, width: ((window.innerWidth)/(perColCompact))}}><p></p></div>); 
+                }
+                
+            }
+           
+            rows.push(<Col><div className="col" style={{float: "left", margin: 15, textAlign: "left"}}>
+                <h3>Day {i+1}</h3>
+                {subRows} 
+                </div></Col>); 
+
+            
         }
-        if(i %4 === 0){
-            rows.push(<div class="w-100"></div>); 
-        }
-        rows.push(<div className ="col-3">
-     
+
+    } else {
+        // reverse order 
+        for(let i = props.listOfList.length -1 ; i >=0; i--){
+            let subRows = []; 
+            for(let j = 0; j < props.listOfList[i].length; j++){
+                if(display === "Default"){
+                    subRows.push(<div style={{backgroundColor: props.listOfList[i][j].boxColor, height: 30, margin: 5, width: ((window.innerWidth)/(perCol))}}><p>{props.listOfList[i][j].boxName}</p></div>); 
+                } else {
+                    
+                    subRows.push(<div style={{backgroundColor: props.listOfList[i][j].boxColor, height: 30, margin: 5, width: ((window.innerWidth)/(perColCompact))}}><p></p></div>); 
+                }
+            }
+            //rows.push(<div className ="col-3">
+            rows.push(<Col><div className="col" style={{float: "left", margin: 15, textAlign: "left"}}>
             <h3>Day {i+1}</h3>
-            {subRows}
-            </div>); 
-        
+            {subRows} 
+            </div></Col>); 
+        }
+
     }
 
+  
+
     return(
-    
         <div>
-            <h2>Hi I'm Auntie</h2>
-            
-            
+            <h1>History</h1>
+        
+        <Container>
+        <Row xs="auto">
+
+           <Col><h6>Sort by</h6></Col>
+           <Col>
+           <Dropdown>
+                <Dropdown.Toggle variant="secondary" id="dropdown-basic">
+                    {order}
+                </Dropdown.Toggle>
+                <div class="w-100"></div>
+                <Dropdown.Menu>
+                    <Dropdown.Item onClick={()=>setOrder("Oldest to Newest")}>Oldest to Newest</Dropdown.Item>
+                    <Dropdown.Item onClick={()=>setOrder("Newest to Oldest")}>Newest to Oldest</Dropdown.Item>
+
+                </Dropdown.Menu>
+            </Dropdown>
+            </Col>
+
+            <Col><h6>Display</h6></Col>
+
+            <Col>
+            <Dropdown>
+                <Dropdown.Toggle variant="secondary" id="dropdown-basic">
+                    {display}
+                </Dropdown.Toggle>
+
+                <Dropdown.Menu>
+                    <Dropdown.Item onClick={()=>setDisplay("Default")}>Default</Dropdown.Item>
+                    <Dropdown.Item onClick={()=>setDisplay("Compact")}>Compact</Dropdown.Item>
+
+                </Dropdown.Menu>
+            </Dropdown>
+            </Col>
+        </Row>
+        </Container>
+       
             <div className="container">
-                <div  className="row">
+                <div className="row">
+                <Row xs="auto">
                 {rows}
+                </Row>
                 </div>
             </div>
         </div>
     ); 
     
 }
-
-/*
-<div>
-{
-    listOfList.map((list, index)=>{
-        return(
-            <div key={index}><p>Day {index}</p>
-            {
-                listOfList.list.map((element, i) =>{
-                    return(
-                        <p>{element}</p>
-                    )
-                })
-            }
-            </div>
-        )
-    } )
-
-}
-</div>
-
-*/
