@@ -4,7 +4,7 @@ import TasksList from "./TasksList";
 import "./index.css"
 
 
-export default function TaskCreator({initialList, handleOnClickForMom, handleAddTasks}){
+export default function TaskCreator({initialList, handleOnClickForMom, handleAddTasks, handleRemoveTask}){
   const [newTask, setNewTask] = useState({}); 
   const [allTasks, setAllTasks] = useState(initialList); // got to pass this up!
 
@@ -30,16 +30,19 @@ export default function TaskCreator({initialList, handleOnClickForMom, handleAdd
   const handleSubmit = (event) => {
     event.preventDefault();
     if (!newTask.title) return;
+
     setAllTasks((prev) => [newTask, ...prev]); 
-    handleAddTasks(allTasks); 
     setNewTask({}); 
+    handleAddTasks(newTask); 
+  
   }
 
   const handleDelete = (taskIdToRemove) => {
+    handleRemoveTask(taskIdToRemove)
+    
     setAllTasks((prev) => prev.filter(
       (task) => task.id !== taskIdToRemove
       )); 
-    handleAddTasks(allTasks); 
     
   }; 
   
@@ -53,7 +56,6 @@ export default function TaskCreator({initialList, handleOnClickForMom, handleAdd
           handleChange={handleChange}
           handleColorChangey = {handleColorChangey}
           handleSubmit={handleSubmit}
-          
           
         />
         <TasksList

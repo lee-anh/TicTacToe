@@ -1,5 +1,3 @@
-
-
 import './App.css';
 
 
@@ -31,8 +29,13 @@ function App() {
   }; 
 
   const handleAddToGrandTaskList = (elementToAdd) => {
-    //setGrandTaskList(grandTaskList => [...grandTaskList, elementToAdd]); 
-    setGrandTaskList(elementToAdd); 
+    setGrandTaskList(grandTaskList => [elementToAdd, ...grandTaskList]); 
+  }
+
+  const handleDeleteFromGrandTaskList = (taskIdToRemove) => {
+    setGrandTaskList((prev) => prev.filter(
+      (task) => task.id !== taskIdToRemove
+      )); 
   }
 
   return (
@@ -42,7 +45,7 @@ function App() {
         <div className="container">
           <Routes>
             <Route path="/" element={<Test myName="Claire" favorite="1"/>}/>
-            <Route path="dashboard" element={<Mother initialList={grandTaskList} handleAddListToGrandList={handleAddListToGrandList} handleAddTask={handleAddToGrandTaskList}/>}/>
+            <Route path="dashboard" element={<Mother initialList={grandTaskList} handleAddListToGrandList={handleAddListToGrandList} handleAddTask={handleAddToGrandTaskList} handleRemoveTask={handleDeleteFromGrandTaskList}/>}/>
             <Route path="history" element={<Aunt listOfList={grandList}/>}/>
           </Routes>
         </div>

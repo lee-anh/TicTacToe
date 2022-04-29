@@ -10,9 +10,7 @@ import GoodAlert from './GoodAlert.js'
 import TimePicker from './TimePicker.js';
 
 //let boxArray = []; // not the right scope 
-export default function Mother({initialList, handleAddListToGrandList, handleAddTask}){
-    const boxColor = "white"; 
-    const boxName = "default title"; 
+export default function Mother({initialList, handleAddListToGrandList, handleAddTask, handleRemoveTask}){
 
     const [timeBlocks, setTimeBlocks] = useState(12); 
     const [currentBrushColor, setCurrentBrushColor] = useState("pink"); 
@@ -74,7 +72,7 @@ export default function Mother({initialList, handleAddListToGrandList, handleAdd
         <div>
             <Row>
             <Col>
-            <TaskCreator initialList={initialList} handleOnClickForMom={handleOnClickForMom} handleAddTasks={handleAddTask}/>
+            <TaskCreator initialList={initialList} handleOnClickForMom={handleOnClickForMom} handleAddTasks={handleAddTask} handleRemoveTask={handleRemoveTask}/>
             </Col>
             <Col>
             <hr />
