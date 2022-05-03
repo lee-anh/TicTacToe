@@ -16,8 +16,8 @@ export default function GoodAlert(props){
         <>
         <Alert show={show} variant="success">
             <Alert.Heading>Are you sure you want to save the day?</Alert.Heading>
+            <p>You can see your saved days in the "History" tab</p>
             <hr />
-
             <div className="d-flex justify-content-end">
             <Button onClick={() => setShow(false)} variant="outline-danger">
                 Cancel 

@@ -50,3 +50,17 @@ div div button:focus {
   box-shadow: 0 0 1px black;
 }
 
+.box {
+  transition: box-shadow .3s;
+  min-width: 200px;
+  min-height: 100px; 
+  margin: 2px; 
+  padding-top: 30px; 
+  border: 1px solid #ccc;
+  position: relative;
+  text-align: center;
+  
+}
+.box:hover {
+  box-shadow: 0 0 11px rgba(33,33,33,.7); 
+}

@@ -5,7 +5,7 @@ import "./index.css"
 
 
 export default function TaskCreator({initialList, handleOnClickForMom, handleAddTasks, handleRemoveTask}){
-  const [newTask, setNewTask] = useState({}); 
+  const [newTask, setNewTask] = useState({taskColor: "#c2ed64"}); 
   const [allTasks, setAllTasks] = useState(initialList); // got to pass this up!
 
 
@@ -32,7 +32,7 @@ export default function TaskCreator({initialList, handleOnClickForMom, handleAdd
     if (!newTask.title) return;
 
     setAllTasks((prev) => [newTask, ...prev]); 
-    setNewTask({}); 
+    setNewTask({taskColor: "#c2ed64"}); 
     handleAddTasks(newTask); 
   
   }
