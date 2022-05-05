@@ -16,6 +16,7 @@ export default function Header(){
                     <Col><Link to="/">Home</Link></Col>
                     <Col><Link to="dashboard">Dashboard</Link></Col>
                     <Col><Link to="history">History</Link></Col>
+                    <Col><Link to="cousin">Cousin</Link></Col>
 
                     
                 

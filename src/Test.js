@@ -10,7 +10,7 @@ const cuteChars = [
     }
 ]; 
 
-
+const helloKittyStarTrek = { title: "Hello Kitty in Star Trek uniform", src: "https://i.pinimg.com/originals/f3/97/62/f39762be64aab2034fbc215cca4349ce.jpg"}
 
 export class Test extends React.Component {
     render(){
@@ -30,6 +30,11 @@ export class Test extends React.Component {
             <div>
             <h1>Hello {this.props.myName}!</h1>
             <img src ={friend.src} width="400" class="rounded"/>
+        
+            <p>How long do you spend eating? How long do you spend doing homework? Track how you spend your every waking hour using Time Tracker and figure out how you are spending your time.</p>
+            <p>Track your time on the <b>Dashboard</b> tab. You can create tasks and enter how you spend your hours.</p>
+            <p>View your history in the <b>History</b> tab.</p>
+        
             </div>
             
         )
@@ -43,3 +48,5 @@ export default Test;
             <img src = {cuteChars.src} />
             </div>
             */
+
+            //     <img src ={helloKittyStarTrek.src} width="400" class="rounded"/>

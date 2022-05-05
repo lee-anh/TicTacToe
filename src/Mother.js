@@ -18,10 +18,32 @@ export default function Mother({initialList, handleAddListToGrandList, handleAdd
     const [colorArray, setColorArray] = useState(Array(timeBlocks).fill({boxColor: "white", boxName: ""})); 
     const [startTime, setStartTime] = useState(8); 
     const [endTime, setEndTime] = useState(20); 
-    const [currColor, setCurrColor] = useState("white"); 
-    const [taskName, setCurrTaskName] = useState(""); 
+    const [ack, setAck]= useState(false); 
 
-    let refreshCounter = 0; 
+   // let refreshCounter = 0; 
+
+ 
+     
+     const handleBoxChange = (id, color, taskName) => {
+        // next handle the taskName 
+        /*
+        setColorArray(
+            // not setting things correctly here 
+            colorArray.map((element, id2) => 
+                id2 === id ? {...element, boxColor: color, boxName: taskName } : { ...element }
+            )
+        ); 
+        */
+
+        setColorArray(
+            // not setting things correctly here 
+            colorArray.map((element, id2) => 
+                id2 === id ? {...element, boxColor: currentBrushColor, boxName: currentTaskName} : { ...element }
+            )
+        ); 
+    }
+
+    
 
     const computeTimeBlocks = (starty, endy) => {
         let num = endy-starty; 
@@ -31,42 +53,30 @@ export default function Mother({initialList, handleAddListToGrandList, handleAdd
             setEndTime(endy); 
         }
     }; 
-    // maybe have another function to reset the Box Array?
-    const handleBoxChange = (id, color, taskName) => {
-        // next handle the taskName 
-        
-        setColorArray(
-            // not setting things correctly here 
-            colorArray.map((element, id2) => 
-                id2 === id ? {...element, boxColor: color, boxName: taskName } : { ...element }
-            )
-        );  // I think I need to do something like this for the boxArray 
-        // don't cause a circle 
-    }
+   
 
     const handleOnClickForMom = (color, taskName) => {
         setCurrentBrushColor(color); 
         setCurrentTaskName(taskName); 
     }
 
+   // let timey = <TimeArray starty={startTime} endy={endTime} currentBrushColor={currentBrushColor} currentTaskName={currentTaskName} handleBoxChange={handleBoxChange}/>; 
+
     const handleSaveClick = () => {
         handleAddListToGrandList(colorArray); 
-        // reset the arrays 
+        // reset the arrays... this is not working... 
         setColorArray(Array(timeBlocks).fill({boxColor: "white", boxName: ""})); // this is ok 
-        refreshCounter++; 
+        setAck(true); 
+        //refreshCounter++; 
+       // setCurrentBrushColor("white");
         // need to redraw the box array somehow 
-        /*
-        let newBoxArray = []; 
-        for(let i = 0; i < timeBlocks; i++){
-            newBoxArray.push(<Box data={currentBrushColor} title={currentTaskName} id={i} handleBoxChange={handleBoxChange}/>); 
-        }
-
-        boxArray = newBoxArray; 
-        */
-   
-
+       // timey =  <TimeArray starty={startTime} endy={endTime} currentBrushColor={currentBrushColor} currentTaskName={currentTaskName} handleBoxChange={handleBoxChange}/>; 
     }
-    
+
+    const handleAck = () => {
+        setAck(false); 
+    }
+
     return(
         <div>
             <Row>
@@ -77,9 +87,11 @@ export default function Mother({initialList, handleAddListToGrandList, handleAdd
             <hr />
             
             <TimePicker computeTimeBlocks={computeTimeBlocks}/>
+     
+            
             <hr />
             <div >
-                <TimeArray refresh={refreshCounter} starty={startTime} endy={endTime} currentBrushColor={currentBrushColor} currentTaskName={currentTaskName} handleBoxChange={handleBoxChange}/>
+                <TimeArray ack={ack} handleAck={handleAck} colorArr={colorArray} starty={startTime} endy={endTime} currentBrushColor={currentBrushColor} currentTaskName={currentTaskName} handleBoxChange={handleBoxChange}/>
                 <GoodAlert handleSaveClick={handleSaveClick}/>
             </div>
             </Col>

@@ -6,8 +6,6 @@ import Col from "react-bootstrap/Col";
 
 export default function TasksList({allTasks, handleDelete, handleOnClickForMom}){
 
-
-
     // for handle delete you must make this harder to delete 
     return(
         <div>
@@ -19,15 +17,13 @@ export default function TasksList({allTasks, handleDelete, handleOnClickForMom})
                         <button className="xButton" onClick={() => handleDelete(id)}>X</button>
                     </div>
                     </Col>
-                
             ))}
             </Row>
         </div>
-    ); 
+    );
 }
 
 /*
-
 <div>
             <Row>
             {allTasks.map(({title, taskColor, id}) => (

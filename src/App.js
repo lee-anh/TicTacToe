@@ -9,13 +9,16 @@ import {
 import React, {useState} from "react"; 
 import {Test} from './Test.js'
 //import Grandma from "./Grandma";
-import {Palette} from './Palette.js'
-import {ColorPalette} from './ColorPalette.js'
+//import {Palette} from './Palette.js'
+//import {ColorPalette} from './ColorPalette.js'
+
+
 import {Clock} from './Clock.js'
 import Header from './Header.js'
 
 import Mother from './Mother.js'
 import Aunt from './Aunt.js'
+import Cousin from './Cousin.js'
 
 
 // Can I somehow Split the Grandma and have her Mom and Aunt components be on different pages 
@@ -47,6 +50,7 @@ function App() {
             <Route path="/" element={<Test myName="Claire" favorite="1"/>}/>
             <Route path="dashboard" element={<Mother initialList={grandTaskList} handleAddListToGrandList={handleAddListToGrandList} handleAddTask={handleAddToGrandTaskList} handleRemoveTask={handleDeleteFromGrandTaskList}/>}/>
             <Route path="history" element={<Aunt listOfList={grandList}/>}/>
+            <Route path="cousin" element={<Cousin initialList={grandTaskList} handleAddListToGrandList={handleAddListToGrandList} handleAddTask={handleAddToGrandTaskList} handleRemoveTask={handleDeleteFromGrandTaskList}/>}/>
           </Routes>
         </div>
   

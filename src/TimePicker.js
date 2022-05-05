@@ -60,7 +60,7 @@ export default function TimePicker(props){
             setEndTime(check); 
             setEndString(lookUp(check)); 
             props.computeTimeBlocks(startTime, endTime);
-        } 
+        }
     }
 
     const checkDisableForStart = (check) => {

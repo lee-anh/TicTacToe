@@ -6,9 +6,11 @@ import Col from "react-bootstrap/Col"
 
 
 export default function TimeArray(props){
-    const [currentCount, setCurrentCount] = useState(0); 
-    const [brush, setBrush] = useState(props.currentBrushColor);
-    const [taskName, setTaskName] = useState(props.currentTaskName); 
+   // const [currentCount, setCurrentCount] = useState(0); 
+    //const [brush, setBrush] = useState(props.currentBrushColor);
+    //const [taskName, setTaskName] = useState(props.currentTaskName); 
+
+    /*
     if(currentCount != props.refresh){
         setCurrentCount(props.refresh); 
         //setBrush("white");
@@ -16,6 +18,7 @@ export default function TimeArray(props){
         console.log("currentCount and refresh mismatch"); 
 
     }
+    */
     
 
     const lookUp = (timeNum) =>{
@@ -52,6 +55,29 @@ export default function TimeArray(props){
         return toReturn; 
     }
 
+    /*
+    let bground = "";
+    let name = ""; 
+    if (props.ack === true){
+        bground = "white";
+       // console.log("Ack: " + props.ack, "bground: " + bground); 
+        props.handleAck(); // now make ack false 
+    } else {
+        bground = props.currentBrushColor; 
+       // name = props.currentTaskName; 
+        console.log("Ack: " + props.ack, "bground: " + bground); 
+    }
+   
+    const handleClick = (colory, tasky) => {
+        setBrush(colory);
+        setTaskName(tasky); 
+    }
+     */
+
+    // keep the id's time stamped 
+    // delete all of them keep all the ids 
+    
+
     let toDisplay = []; 
     let numBlocks = props.endy - props.starty; 
     if(numBlocks > 0){
@@ -61,8 +87,9 @@ export default function TimeArray(props){
                 // I don't know how to reset all of the boxes 
                 <div>
                     <Row>
-                        <Col><div className="d-flex flex-column" style={{width: 300}}><Box data={props.currentBrushColor} title={props.currentTaskName} id={y} handleBoxChange={props.handleBoxChange}/></div></Col>
-                        <Col><div style={{textAlign: "left"}}>{lookUp(i)}</div></Col>
+                        <Col><div className="d-flex flex-column" style={{width: 300}}><Box handleAck={props.handleAck} ack={props.ack} data={props.currentBrushColor} title={props.currentTaskName} id={y} handleBoxChange={props.handleBoxChange}/></div></Col>
+                        
+                        <Col><div style={{textAlign: "left"}}>{lookUp(i)}</div></Col>   
                     </Row>
                     
                 </div>
@@ -79,3 +106,15 @@ export default function TimeArray(props){
     )
     
 }
+
+
+/*
+
+ <Row>
+                        <Col><div className="d-flex flex-column" style={{width: 300}}><Box data={props.currentBrushColor} title={props.currentTaskName} id={y} handleBoxChange={props.handleBoxChange}/></div></Col>
+                        <Col><div style={{textAlign: "left"}}>{lookUp(i)}</div></Col>
+                    </Row>
+
+                    */
+
+                    // causes all of the boxes to be the same color:  <Col><div className="d-flex flex-column" style={{width: 300}}><button class="btn btn-light" style={{backgroundColor: brush, height: 30, borderColor: "lightgray", margin: 1}} onClick={() => handleClick(props.currentBrushColor, props.currentTaskName)}>{taskName}</button></div></Col>
