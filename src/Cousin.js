@@ -6,39 +6,19 @@ import Dropdown from "react-bootstrap/Dropdown"
 import TaskCreator from './TaskCreator';
 import GoodAlert from './GoodAlert';
 import Boxy from './Boxy.js'
-// in this class we will build the TimePicker over from scratch 
+
+
+// in this componentwe will build the TimePicker over from scratch 
 // in an attempt to fix 2 of the bugs
 // more of the components will be on the same level to try to address the bugs
 // it will replace the Mother function 
 // can cousin actually fix all of this? // put it on the same level 
-export default function Cousin({initialList, handleAddListToGrandList, handleAddTask, handleRemoveTask }) {
-    // for the drop downs
-    const [startTime, setStartTime] = useState(8); // 8 am
-    const [endTime, setEndTime] = useState(20);  // 8 pm
-    const [timeBlocks, setTimeBlocks] = useState(endTime-startTime); 
 
-    const [startString, setStartString] = useState("8 am");
-    const [endString, setEndString] = useState("8 pm");
 
-    // for grandma 
-    const [colorArray, setColorArray] = useState(Array(timeBlocks).fill({ boxColor: "white", boxName: "" }));
+export default function Cousin({initialStartTime, initialEndTime, handleChangeTime, initialList, handleAddListToGrandList, handleAddTask, handleRemoveTask }) {
 
-    // paintbrush stuff
-    const [currentBrushColor, setCurrentBrushColor] = useState("pink"); 
-    const [currentTaskName, setCurrentTaskName] = useState("");
-    const [dummy, setDummy] = useState(""); 
-
-    const handleBoxChange = (id) => {
-        
-        setColorArray(
-            colorArray.map((element, id2) => 
-                id2 === id ? {...element, boxColor: currentBrushColor, boxName: currentTaskName} : { ...element }
-            )
-        ); 
-    }
-
-    // for drop down
-    const lookUp = (timeNum) => {
+     // for drop down
+     const lookUp = (timeNum) => {
         let toReturn = "";
         if (timeNum === 0) {
             toReturn = "12 am";
@@ -71,9 +51,37 @@ export default function Cousin({initialList, handleAddListToGrandList, handleAdd
         }
         return toReturn;
     }
+    // for the drop downs
+    const [startTime, setStartTime] = useState(initialStartTime); // 8 am
+    const [endTime, setEndTime] = useState(initialEndTime);  // 8 pm
+    const [timeBlocks, setTimeBlocks] = useState(endTime-startTime); 
+
+    const [startString, setStartString] = useState(lookUp(initialStartTime));
+    const [endString, setEndString] = useState(lookUp(initialEndTime));
+
+    // for grandma 
+    const [colorArray, setColorArray] = useState(Array(timeBlocks).fill({ boxColor: "white", boxName: "" }));
+
+    // paintbrush stuff
+    const [currentBrushColor, setCurrentBrushColor] = useState("pink"); 
+    const [currentTaskName, setCurrentTaskName] = useState("");
+    const [dummy, setDummy] = useState(""); 
+
+
+    const handleBoxChange = (id) => {
+        
+        setColorArray(
+            colorArray.map((element, id2) => 
+                id2 === id ? {...element, boxColor: currentBrushColor, boxName: currentTaskName} : { ...element }
+            )
+        ); 
+    }
+
+   
 
 
     let toDisplay = []; 
+
     let y = 0; 
     for(let i = startTime; i < endTime; i++){
         // maybe separate out the html and then you'll get different components? 
@@ -102,6 +110,7 @@ export default function Cousin({initialList, handleAddListToGrandList, handleAdd
             setStartTime(check);
             setStartString(lookUp(check));
             setTimeBlocks(endTime-startTime); 
+            handleChangeTime(check, endTime); 
         }
     }
 
@@ -112,6 +121,7 @@ export default function Cousin({initialList, handleAddListToGrandList, handleAdd
             setEndTime(check);
             setEndString(lookUp(check));
             setTimeBlocks(endTime-startTime); 
+            handleChangeTime(startTime, check);
         }
     }
     // for drop down 
@@ -132,10 +142,6 @@ export default function Cousin({initialList, handleAddListToGrandList, handleAdd
     const handleSaveClick = () => {
         handleAddListToGrandList(colorArray); 
         setColorArray(Array(timeBlocks).fill({boxColor: "white", boxName: ""})); // this is ok 
-        for(let i = 0; i < timeBlocks; i++){
-            toDisplay.pop(); // the next render just resets everything 
-        }
-
         setDummy(Date.now()); // dummy + Date.now() was the key to syncing everything up!!! 
     }
 

@@ -26,6 +26,8 @@ import Cousin from './Cousin.js'
 function App() {
   const [grandList, setGrandList] = useState([]); 
   const [grandTaskList, setGrandTaskList] = useState([]); 
+  const [initialStartTime, setInitialStartTime] = useState(8);
+  const [initialEndTime, setInitialEndTime] = useState(20); 
 
   const handleAddListToGrandList = (listToAdd) => {
     setGrandList(grandList => [...grandList, listToAdd]); 
@@ -40,6 +42,12 @@ function App() {
       (task) => task.id !== taskIdToRemove
       )); 
   }
+  
+  const handleChangeTime = (start, end) => {
+    setInitialStartTime(start);
+    setInitialEndTime(end); 
+    console.log("start "  + initialStartTime + " end " + initialEndTime); 
+  }
 
   return (
     <div >
@@ -50,7 +58,7 @@ function App() {
             <Route path="/" element={<Test myName="Claire" favorite="1"/>}/>
             <Route path="dashboard" element={<Mother initialList={grandTaskList} handleAddListToGrandList={handleAddListToGrandList} handleAddTask={handleAddToGrandTaskList} handleRemoveTask={handleDeleteFromGrandTaskList}/>}/>
             <Route path="history" element={<Aunt listOfList={grandList}/>}/>
-            <Route path="cousin" element={<Cousin initialList={grandTaskList} handleAddListToGrandList={handleAddListToGrandList} handleAddTask={handleAddToGrandTaskList} handleRemoveTask={handleDeleteFromGrandTaskList}/>}/>
+            <Route path="cousin" element={<Cousin initialStartTime={initialStartTime} initialEndTime={initialEndTime} handleChangeTime={handleChangeTime} initialList={grandTaskList} handleAddListToGrandList={handleAddListToGrandList} handleAddTask={handleAddToGrandTaskList} handleRemoveTask={handleDeleteFromGrandTaskList}/>}/>
           </Routes>
         </div>
   

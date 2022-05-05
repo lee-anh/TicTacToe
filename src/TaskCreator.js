@@ -7,7 +7,7 @@ import "./index.css"
 export default function TaskCreator({initialList, handleOnClickForMom, handleAddTasks, handleRemoveTask}){
   const [newTask, setNewTask] = useState({taskColor: "#c2ed64"}); 
   const [allTasks, setAllTasks] = useState(initialList); // got to pass this up!
-
+  
 
   // event handler for general changes to state 
   const handleChange = ({ target }) => {
