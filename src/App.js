@@ -16,16 +16,18 @@ import {Test} from './Test.js'
 import {Clock} from './Clock.js'
 import Header from './Header.js'
 
-import Mother from './Mother.js'
 import Aunt from './Aunt.js'
 import Cousin from './Cousin.js'
+import Analytics from './Analytics.js'
 
 
 // Can I somehow Split the Grandma and have her Mom and Aunt components be on different pages 
 
 function App() {
-  const [grandList, setGrandList] = useState([]); 
-  const [grandTaskList, setGrandTaskList] = useState([]); 
+  const [grandList, setGrandList] = useState([]); // list of all data
+  const [grandTaskList, setGrandTaskList] = useState([]); // list of tasks 
+
+  // times 
   const [initialStartTime, setInitialStartTime] = useState(8);
   const [initialEndTime, setInitialEndTime] = useState(20); 
 
@@ -56,9 +58,9 @@ function App() {
         <div className="container">
           <Routes>
             <Route path="/" element={<Test myName="Claire" favorite="1"/>}/>
-            <Route path="dashboard" element={<Mother initialList={grandTaskList} handleAddListToGrandList={handleAddListToGrandList} handleAddTask={handleAddToGrandTaskList} handleRemoveTask={handleDeleteFromGrandTaskList}/>}/>
+            <Route path="dashboard" element={<Cousin initialStartTime={initialStartTime} initialEndTime={initialEndTime} handleChangeTime={handleChangeTime} initialList={grandTaskList} handleAddListToGrandList={handleAddListToGrandList} handleAddTask={handleAddToGrandTaskList} handleRemoveTask={handleDeleteFromGrandTaskList}/>}/>
             <Route path="history" element={<Aunt listOfList={grandList}/>}/>
-            <Route path="cousin" element={<Cousin initialStartTime={initialStartTime} initialEndTime={initialEndTime} handleChangeTime={handleChangeTime} initialList={grandTaskList} handleAddListToGrandList={handleAddListToGrandList} handleAddTask={handleAddToGrandTaskList} handleRemoveTask={handleDeleteFromGrandTaskList}/>}/>
+            <Route path="analytics" element={<Analytics allTasks={grandTaskList} grandList={grandList} />}/>
           </Routes>
         </div>
   

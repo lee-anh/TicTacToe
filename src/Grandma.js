@@ -15,8 +15,6 @@ export default function Grandma() {
 
     }
 
-
-    //<Aunt listOfList={grandList}/>
     return(
         <div>
         <Mother handleAddListToGrandList={handleAddListToGrandList}/>

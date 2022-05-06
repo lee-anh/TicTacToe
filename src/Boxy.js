@@ -6,9 +6,10 @@ export default function Boxy(props){
     const [currColor, setCurrColor] = useState("white");
     const [taskName, setTaskName] = useState(""); // I feel like these will be delayed now 
     const [dummie, setDummie] = useState(0);
+
     if(dummie != props.dummy){
         setDummie(props.dummy);
-        setCurrColor("white"); // might cause infintie 
+        setCurrColor("white");
         setTaskName(""); 
     }
     
@@ -20,6 +21,6 @@ export default function Boxy(props){
     }
  
     return(
-        <button class="btn btn-light" style={{backgroundColor: currColor, height: 30, borderColor: "lightgray", margin: 1}} onClick={() => handleClick(props.colorToSet, props.taskNameToSet)}>{taskName}</button>
+        <button className="btn btn-light" style={{backgroundColor: currColor, height: 30, borderColor: "lightgray", margin: 1}} onClick={() => handleClick(props.colorToSet, props.taskNameToSet)}>{taskName}</button>
     )
 }

@@ -18,7 +18,7 @@ import Boxy from './Boxy.js'
 export default function Cousin({initialStartTime, initialEndTime, handleChangeTime, initialList, handleAddListToGrandList, handleAddTask, handleRemoveTask }) {
 
      // for drop down
-     const lookUp = (timeNum) => {
+    const lookUp = (timeNum) => {
         let toReturn = "";
         if (timeNum === 0) {
             toReturn = "12 am";
@@ -157,7 +157,7 @@ export default function Cousin({initialStartTime, initialEndTime, handleChangeTi
 
                     <Row xs="auto">
 
-                        <Col><h6>Start Time</h6></Col>
+                        <Col><div style={{margin: 10}}><h6>Start Time</h6></div></Col>
                         <Col>
                             <Dropdown size="sm">
                                 <Dropdown.Toggle variant="secondary" id="dropdown-basic">
@@ -193,7 +193,7 @@ export default function Cousin({initialStartTime, initialEndTime, handleChangeTi
                             </Dropdown>
                         </Col>
 
-                        <Col><h6>End Time</h6></Col>
+                        <Col><div style={{margin: 10}}><h6>End Time</h6></div></Col>
                         <Col>
                             <Dropdown size="sm">
                                 <Dropdown.Toggle variant="secondary" id="dropdown-basic">

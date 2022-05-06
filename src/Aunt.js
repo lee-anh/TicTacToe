@@ -10,13 +10,6 @@ export default function Aunt(props){
     const [order, setOrder] = useState("Oldest to Newest"); 
     const [display, setDisplay] = useState("Default"); 
 
-    // for each of the lists in list of lists, render a component 
-    /*
-    for(let i = 0; i < props.listOfList.length; i++){
-        console.log(props.listOfList[i]); 
-    }
-    */
-    
 
     let rows = []; 
     let perCol = 6; 
@@ -27,10 +20,10 @@ export default function Aunt(props){
         for(let i = 0; i < props.listOfList.length; i++){
             let subRows = []; 
             for(let j = 0; j < props.listOfList[i].length; j++){
-                
+           
                 if(display === "Default"){
 
-                    subRows.push(<div style={{backgroundColor: props.listOfList[i][j].boxColor, height: 30, margin: 5, width: ((window.innerWidth)/(perCol))}}><p>{props.listOfList[i][j].boxName}</p></div>); 
+                    subRows.push(<div style={{backgroundColor: props.listOfList[i][j].boxColor, height: 30, margin: 5, padding: 2,width: ((window.innerWidth)/(perCol))}}><p>{props.listOfList[i][j].boxName}</p></div>); 
                 } else {
                     
                     subRows.push(<div style={{backgroundColor: props.listOfList[i][j].boxColor, height: 30, margin: 5, width: ((window.innerWidth)/(perColCompact))}}><p></p></div>); 
@@ -77,7 +70,7 @@ export default function Aunt(props){
         <Container>
         <Row xs="auto">
 
-           <Col><h6>Sort by</h6></Col>
+           <Col><div style={{margin: 10}}><h6>Sort by</h6></div></Col>
            <Col>
            <Dropdown>
                 <Dropdown.Toggle variant="secondary" id="dropdown-basic">
@@ -92,7 +85,7 @@ export default function Aunt(props){
             </Dropdown>
             </Col>
 
-            <Col><h6>Display</h6></Col>
+            <Col><div style={{margin: 10}}><h6>Display</h6></div></Col>
 
             <Col>
             <Dropdown>

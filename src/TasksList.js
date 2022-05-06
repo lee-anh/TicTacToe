@@ -23,18 +23,3 @@ export default function TasksList({allTasks, handleDelete, handleOnClickForMom})
     );
 }
 
-/*
-<div>
-            <Row>
-            {allTasks.map(({title, taskColor, id}) => (
-                <div key={id} style={{minWidth: 300}}>
-                    <div style={{background: taskColor, position: "relative", textAlign: "center"}} onClick={()=>handleOnClickForMom(taskColor, title)}>
-                        <h2>{title}</h2>
-                        <button className="xButton" onClick={() => handleDelete(id)}>X</button>
-                    </div>
-                </div>
-            ))}
-            </Row>
-        </div>
-
-*/
