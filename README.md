@@ -1,71 +1,43 @@
-# Getting Started with Create React App
+# Time Tracker
+#### Created by Claire Liu, advised by Professor Justin Smith
+#### CS 391 Independent Study in HCI
+#### Spring 2022, Lafayette College
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## Description
+<hr/>
+Have you ever wondered how you spend your time? If you track your time using TimeTracker, you might be surprised to find that you might not be spending your time like you think you are! 
 
-In the project directory, you can run:
+I created this web app, TimeTracker, to track my time digitally. You can create Tasks and track how you are spending your time
 
-### `npm start`
+## Breakdown
+<hr/>
+This project was created in React/React Bootstrap. Here's the breakdown of the components: 
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+![Alt text](./TimeTracker/classDiagram.png)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## How to Run
+<hr/>
 
-### `npm test`
+Run using `npm start`. 
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+You might have to install these additional npm packages if you don't already have them: 
 
-### `npm run build`
+`npm install react-bootstrap bootstrap`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+`npm install react-color`
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+`npm install react-calendar`
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+This project also contains some tests that use the Selenium framework. You can use the created tests (end with `.side` file ext) if you have the Selenium web extension installed. 
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Credits
+<hr/>
+The color picker component was adapted from https://casesandberg.github.io/react-color/
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+The calendar component was from https://github.com/wojtekmaj/react-calendar
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-# TicTacToe
