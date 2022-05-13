@@ -13,11 +13,7 @@ export function ColorSlider(props){
         }
     });
 
-    /*
-    const handleColorChange = (color) => {
-        setState({ color: color.rgb }); 
-    }
-    */
+   
 
     const handleColorChangeComplete = (color, e) => {
         setState({ color: color.rgb }); 

@@ -162,12 +162,13 @@ export default function Cousin({initialStartTime, initialEndTime, handleChangeTi
         setDateString(days[val.getDay()] + ", " + val.toLocaleDateString()); 
         setColorArray(
             colorArray.map((element, id2) => 
-                id2 === id2 ? {...element, date: dateString} : {...element, date: dateString}
+                id2 === id2 ? {...element, date: days[val.getDay()] + ", " + val.toLocaleDateString()} : {...element, date: days[val.getDay()] + ", " + val.toLocaleDateString()}
 
             )
         )
         setShowCalendar(false); 
     }
+    
     const picky = () => {
         setShowCalendar(true); 
     }
@@ -190,7 +191,7 @@ export default function Cousin({initialStartTime, initialEndTime, handleChangeTi
                 
                     <Button onClick={picky}>Pick Date</Button> 
                     {showCalendar ? <Calendar returnValue={'start'} calendarType='US' onClickDay ={(value)=>changeCalendar(value)} prev2Label= {null} next2Label ={null} /> : null}
-                    
+                
                     <hr />
 
                     <Row xs="auto">

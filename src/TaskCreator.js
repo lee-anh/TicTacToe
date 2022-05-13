@@ -54,13 +54,13 @@ export default function TaskCreator({initialList, handleOnClickForMom, handleAdd
 
   const handleDelete = (taskIdToRemove) => {
     setDelete(taskIdToRemove); 
-    console.log("taskIdToRemove: " + taskIdToRemove); 
+    //console.log("taskIdToRemove: " + taskIdToRemove); 
     setShow(true); 
-    console.log("show: " + show); 
+    //console.log("show: " + show); 
   }
 
   const handleConfirmDelete = () => {
-    console.log("toDelete: " + toDelete); 
+    //console.log("toDelete: " + toDelete); 
     setShow(false);
     handleRemoveTask(toDelete); 
     setAllTasks((prev) => prev.filter(
@@ -68,6 +68,10 @@ export default function TaskCreator({initialList, handleOnClickForMom, handleAdd
       )); 
 
 
+  }
+
+  const handleCancelDelete = () => {
+    setShow(false); 
   }
   
   // currently the last action is getting lost 
@@ -88,7 +92,7 @@ export default function TaskCreator({initialList, handleOnClickForMom, handleAdd
           handleOnClickForMom={handleOnClickForMom}
         
         />
-        <ModalAlert show = {show} handleConfirmDelete = {handleConfirmDelete} />  
+        <ModalAlert show = {show} handleConfirmDelete = {handleConfirmDelete} handleClose = {handleCancelDelete} />  
         
       </div>
       

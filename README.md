@@ -1,5 +1,8 @@
 # TimeTracker
-#### Created by Claire Liu, advised by Professor Justin Smith,CS 391 Independent Study in HCI (Spring 2022) Lafayette College
+
+Created by Claire Liu. Advised by Professor Justin Smith. 
+
+This is my project for CS 391 Independent Study in HCI (Spring 2022) at Lafayette College
 
 
 ## Description

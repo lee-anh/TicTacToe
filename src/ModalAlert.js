@@ -16,13 +16,13 @@ export default function ModalAlert(props) {
         <>
             
 
-            <Modal show={props.show} onHide={handleClose}>
+            <Modal show={props.show} onHide={props.handleClose}>
                 <Modal.Header closeButton>
                     <Modal.Title>Delete Task</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>You cannot undo this action. It will delete the task card and the task from History and Analytics.</Modal.Body>
                 <Modal.Footer>
-                    <Button variant="secondary" onClick={handleClose}>
+                    <Button variant="secondary" onClick={props.handleClose}>
                         Cancel
                     </Button>
                     <Button variant="danger" onClick={handleDeleteClose}>

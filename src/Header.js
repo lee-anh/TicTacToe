@@ -13,10 +13,10 @@ export default function Header(){
                 </div>
                 <Row>
             
-                    <Col><Nav.Link href="/">Home</Nav.Link></Col>
-                    <Col><Nav.Link href="dashboard">Dashboard</Nav.Link></Col>
-                    <Col><Nav.Link href="history">History</Nav.Link></Col>
-                    <Col><Nav.Link href="analytics">Analytics</Nav.Link></Col>
+                    <Col><Link to="/">Home</Link></Col>
+                    <Col><Link to="dashboard">Dashboard</Link></Col>
+                    <Col><Link to="history">History</Link></Col>
+                    <Col><Link to="analytics">Analytics</Link></Col>
                     
                     
                 
@@ -29,6 +29,13 @@ export default function Header(){
 }
 
 
+/*
+ <Col><Nav.Link href="/">Home</Nav.Link></Col>
+                    <Col><Nav.Link href="dashboard">Dashboard</Nav.Link></Col>
+                    <Col><Nav.Link href="history">History</Nav.Link></Col>
+                    <Col><Nav.Link href="analytics">Analytics</Nav.Link></Col>
+                    
+*/
 /*
 // sort of works 
 <div>
