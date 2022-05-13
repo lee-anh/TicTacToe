@@ -7,7 +7,7 @@ export class Clock extends React.Component {
     }
     render(){
         return(
-        <div class="rounded" ><h1>{this.state.date.toLocaleTimeString()}</h1></div>
+        <div class="rounded" >{this.state.date.toLocaleTimeString().replace(/(.*)\D\d+/, '$1')}</div>
         ); 
     }
     componentDidMount(){

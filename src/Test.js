@@ -1,4 +1,5 @@
 import React from 'react';
+
 const cuteChars = [
     {
         title: "Jinbesan",
@@ -28,12 +29,14 @@ export class Test extends React.Component {
     
         return(
             <div>
-            <h1>Hello {this.props.myName}!</h1>
+            <h1>Hello {this.props.myName}!</h1> 
+            
             <img src ={friend.src} width="400" class="rounded"/>
         
             <p>How long do you spend eating? How long do you spend doing homework? Track how you spend your every waking hour using Time Tracker and figure out how you are spending your time.</p>
             <p>Track your time on the <b>Dashboard</b> tab. You can create tasks and enter how you spend your hours.</p>
             <p>View your history in the <b>History</b> tab.</p>
+            <p>Get some statistics on your time tracking in the <b>Analytics</b> tab.</p>
         
             </div>
             

@@ -1,13 +1,16 @@
 import React, {useState} from "react"; 
 import NewTask from "./NewTask";
 import TasksList from "./TasksList";
+import ModalAlert from "./ModalAlert";
+
 import "./index.css"
 
 
 export default function TaskCreator({initialList, handleOnClickForMom, handleAddTasks, handleRemoveTask}){
   const [newTask, setNewTask] = useState({taskColor: "#c2ed64"}); 
   const [allTasks, setAllTasks] = useState(initialList); // got to pass this up!
-  
+  const [toDelete, setDelete] = useState(-1); 
+  const [show, setShow] = useState(false); 
 
   // event handler for general changes to state 
   const handleChange = ({ target }) => {
@@ -37,7 +40,9 @@ export default function TaskCreator({initialList, handleOnClickForMom, handleAdd
   
   }
 
+  /*
   const handleDelete = (taskIdToRemove) => {
+    
     handleRemoveTask(taskIdToRemove)
     
     setAllTasks((prev) => prev.filter(
@@ -45,6 +50,25 @@ export default function TaskCreator({initialList, handleOnClickForMom, handleAdd
       )); 
     
   }; 
+  */
+
+  const handleDelete = (taskIdToRemove) => {
+    setDelete(taskIdToRemove); 
+    console.log("taskIdToRemove: " + taskIdToRemove); 
+    setShow(true); 
+    console.log("show: " + show); 
+  }
+
+  const handleConfirmDelete = () => {
+    console.log("toDelete: " + toDelete); 
+    setShow(false);
+    handleRemoveTask(toDelete); 
+    setAllTasks((prev) => prev.filter(
+      (task) => task.id !== toDelete
+      )); 
+
+
+  }
   
   // currently the last action is getting lost 
   
@@ -64,6 +88,8 @@ export default function TaskCreator({initialList, handleOnClickForMom, handleAdd
           handleOnClickForMom={handleOnClickForMom}
         
         />
+        <ModalAlert show = {show} handleConfirmDelete = {handleConfirmDelete} />  
+        
       </div>
       
     );

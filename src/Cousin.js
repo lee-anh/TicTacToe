@@ -2,10 +2,16 @@ import React, { useState } from 'react';
 import Row from "react-bootstrap/Row"
 import Col from "react-bootstrap/Col"
 import Dropdown from "react-bootstrap/Dropdown"
+import Button from "react-bootstrap/Button"
+
+import Calendar from "react-calendar"
+
 
 import TaskCreator from './TaskCreator';
 import GoodAlert from './GoodAlert';
 import Boxy from './Boxy.js'
+
+import 'react-calendar/dist/Calendar.css';
 
 
 // in this componentwe will build the TimePicker over from scratch 
@@ -59,13 +65,19 @@ export default function Cousin({initialStartTime, initialEndTime, handleChangeTi
     const [startString, setStartString] = useState(lookUp(initialStartTime));
     const [endString, setEndString] = useState(lookUp(initialEndTime));
 
-    // for grandma 
-    const [colorArray, setColorArray] = useState(Array(timeBlocks).fill({ boxColor: "white", boxName: "" }));
-
-    // paintbrush stuff
+    // paintbrush stuffx
     const [currentBrushColor, setCurrentBrushColor] = useState("pink"); 
     const [currentTaskName, setCurrentTaskName] = useState("");
     const [dummy, setDummy] = useState(""); 
+
+    // calendar stuff
+    const  [currDate, setCurrDate] = useState(new Date());
+    const days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday']; 
+    const [dateString, setDateString] = useState(days[currDate.getDay()] + ", " + currDate.toLocaleDateString()); 
+    const [showCalendar, setShowCalendar] = useState(false); 
+
+    // for grandma 
+    const [colorArray, setColorArray] = useState(Array(timeBlocks).fill({ boxColor: "white", boxName: "",  date: dateString }));
 
 
     const handleBoxChange = (id) => {
@@ -78,8 +90,6 @@ export default function Cousin({initialStartTime, initialEndTime, handleChangeTi
     }
 
    
-
-
     let toDisplay = []; 
 
     let y = 0; 
@@ -140,10 +150,28 @@ export default function Cousin({initialStartTime, initialEndTime, handleChangeTi
     }
 
     const handleSaveClick = () => {
+        
         handleAddListToGrandList(colorArray); 
-        setColorArray(Array(timeBlocks).fill({boxColor: "white", boxName: ""})); // this is ok 
+        setColorArray(Array(timeBlocks).fill({boxColor: "white", boxName: "", date: dateString})); // this is ok 
         setDummy(Date.now()); // dummy + Date.now() was the key to syncing everything up!!! 
     }
+
+    
+    const changeCalendar =(val) => {
+        setCurrDate(val); 
+        setDateString(days[val.getDay()] + ", " + val.toLocaleDateString()); 
+        setColorArray(
+            colorArray.map((element, id2) => 
+                id2 === id2 ? {...element, date: dateString} : {...element, date: dateString}
+
+            )
+        )
+        setShowCalendar(false); 
+    }
+    const picky = () => {
+        setShowCalendar(true); 
+    }
+    
 
 
     return (
@@ -153,6 +181,16 @@ export default function Cousin({initialStartTime, initialEndTime, handleChangeTi
                     <TaskCreator initialList={initialList} handleOnClickForMom={handleOnClickForMom} handleAddTasks={handleAddTask} handleRemoveTask={handleRemoveTask}/>
                 </Col>
                 <Col>
+
+                    
+            
+                 
+                    <hr/>
+                    <h5><b>Current date:</b> {dateString}</h5>
+                
+                    <Button onClick={picky}>Pick Date</Button> 
+                    {showCalendar ? <Calendar returnValue={'start'} calendarType='US' onClickDay ={(value)=>changeCalendar(value)} prev2Label= {null} next2Label ={null} /> : null}
+                    
                     <hr />
 
                     <Row xs="auto">

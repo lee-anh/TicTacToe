@@ -32,7 +32,8 @@ export default function Aunt(props){
             }
            
             rows.push(<Col><div className="col" style={{float: "left", margin: 15, textAlign: "left"}}>
-                <h3>Day {i+1}</h3>
+
+                <h4>{props.listOfList[i][0].date}</h4>
                 {subRows} 
                 </div></Col>); 
 
@@ -53,7 +54,7 @@ export default function Aunt(props){
             }
             //rows.push(<div className ="col-3">
             rows.push(<Col><div className="col" style={{float: "left", margin: 15, textAlign: "left"}}>
-            <h3>Day {i+1}</h3>
+            <h4>{props.listOfList[i][0].date}</h4>
             {subRows} 
             </div></Col>); 
         }
