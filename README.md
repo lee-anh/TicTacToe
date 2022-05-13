@@ -1,23 +1,19 @@
-# Time Tracker
-#### Created by Claire Liu, advised by Professor Justin Smith
-#### CS 391 Independent Study in HCI
-#### Spring 2022, Lafayette College
+# TimeTracker
+#### Created by Claire Liu, advised by Professor Justin Smith,CS 391 Independent Study in HCI (Spring 2022) Lafayette College
 
 
 ## Description
-<hr/>
 Have you ever wondered how you spend your time? If you track your time using TimeTracker, you might be surprised to find that you might not be spending your time like you think you are! 
 
-I created this web app, TimeTracker, to track my time digitally. You can create Tasks and track how you are spending your time
+I created this web app, TimeTracker, to track my time digitally. You can create Tasks representing different tasks or class you do each day (ex. Math, Computer Science,Eating, Chores) and track how you are spending your time each hour. You can see a history of how you spend your time in past days that you tracked and get some simple analytics about how you have spent your time. 
 
 ## Breakdown
-<hr/>
-This project was created in React/React Bootstrap. Here's the breakdown of the components: 
+This project was created in React/React Bootstrap. Here's the breakdown of the main components: 
 
-![Alt text](./TimeTracker/classDiagram.png)
+![Alt text](./classDiagram.png)
+Note that if the component is in curly braces that means that I used a component that someone else made (see Credits)
 
 ## How to Run
-<hr/>
 
 Run using `npm start`. 
 
@@ -30,12 +26,11 @@ You might have to install these additional npm packages if you don't already hav
 `npm install react-calendar`
 
 
-This project also contains some tests that use the Selenium framework. You can use the created tests (end with `.side` file ext) if you have the Selenium web extension installed. 
+This project also contains some tests to generate dummy data. You can use the created tests (they end with `.side` file ext) if you have the Selenium web extension installed. 
 
 
 ## Credits
-<hr/>
-The color picker component was adapted from https://casesandberg.github.io/react-color/
+The color picker component was adapted from https://casesandberg.github.io/react-color/ 
 
 The calendar component was from https://github.com/wojtekmaj/react-calendar
 
